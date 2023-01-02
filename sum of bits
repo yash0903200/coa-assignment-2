@@ -1,0 +1,58 @@
+ead
+Discuss
+Courses
+Practice
+Video
+
+Given a number n. Find the sum of all numbers up to n whose 2 bits are set.
+ 
+
+Examples: 
+
+Input : 10
+Output : 33
+3 + 5 + 6 + 9 + 10 = 33
+
+Input : 100
+Output : 762
+Recommended: Please try your approach on {IDE} first, before moving on to the solution.
+Naive Approach: Find each number up to n whose 2 bits are set. If its 2 bits are set add it to the sum.
+ 
+
+
+
+#include <bits/stdc++.h>
+using namespace std;
+ 
+
+int countSetBits(int n)
+{
+    int count = 0;
+    while (n) {
+        n &= (n - 1);
+        count++;
+    }
+    return count;
+}
+ 
+
+int findSum(int n)
+{
+    int sum = 0;
+ 
+    
+    
+    for (int i = 1; i <= n; i++)
+        if (countSetBits(i) == 2)
+            sum += i;
+ 
+    return sum;
+}
+ 
+
+int main()
+{
+    int n = 10;
+    cout << findSum(n);
+    return 0;
+}
